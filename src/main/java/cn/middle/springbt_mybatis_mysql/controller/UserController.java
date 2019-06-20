@@ -35,5 +35,10 @@ public class UserController {
     public int updateUser( @RequestBody User user ) {
         return userService.updateUser( user );
     }
+    // 这里前端传递的内容都是json
+    // 注解@RequestParam接收的参数是来自requestHeader中，即请求头。通常用于GET请求
+    // 注解@RequestBody接收的参数是来自requestBody中，即请求体。
 
+    // 注解@RequestParam与@RequestBody的使用场景,参考
+    // https://cloud.tencent.com/developer/article/1414464
 }

@@ -1,5 +1,8 @@
 package cn.middle.springbt_mybatis_mysql.entity;
 
+import lombok.Data;
+
+@Data
 public class User {
 
     private Long userId;
@@ -7,35 +10,35 @@ public class User {
     private Boolean sex;
     private String createdTime;
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public Boolean getSex() {
-        return sex;
-    }
-
-    public void setSex(Boolean sex) {
-        this.sex = sex;
-    }
-
-    public String getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
-    }
+//    public Long getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(Long userId) {
+//        this.userId = userId;
+//    }
+//
+//    public String getUserName() {
+//        return userName;
+//    }
+//
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
+//
+//    public Boolean getSex() {
+//        return sex;
+//    }
+//
+//    public void setSex(Boolean sex) {
+//        this.sex = sex;
+//    }
+//
+//    public String getCreatedTime() {
+//        return createdTime;
+//    }
+//
+//    public void setCreatedTime(String createdTime) {
+//        this.createdTime = createdTime;
+//    }
 }
