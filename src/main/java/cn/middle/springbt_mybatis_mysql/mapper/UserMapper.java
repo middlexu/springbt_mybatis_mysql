@@ -9,4 +9,5 @@ public interface UserMapper {
     List<User> getAllUsers();
     int addUser( User user );
     int deleteUser( User user );
+    int updateUser( User user);
 }

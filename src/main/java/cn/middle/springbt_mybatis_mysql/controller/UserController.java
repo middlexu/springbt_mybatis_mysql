@@ -26,9 +26,14 @@ public class UserController {
         return userService.addUser( user );
     }
 
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.DELETE)
     public int deleteUser( @RequestBody User user ) {
         return userService.deleteUser( user );
+    }
+
+    @RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
+    public int updateUser( @RequestBody User user ) {
+        return userService.updateUser( user );
     }
 
 }

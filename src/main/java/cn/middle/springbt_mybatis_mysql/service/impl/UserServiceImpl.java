@@ -34,4 +34,9 @@ public class UserServiceImpl implements IUserService {
     public int deleteUser(User user) {
         return userMapper.deleteUser( user );
     }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateUser( user );
+    }
 }

@@ -21,4 +21,8 @@
         delete from user_test where user_name = #{userName}
     </delete>
 
+    <update id="updateUser" parameterType="cn.middle.springbt_mybatis_mysql.entity.User">
+        update user_test set user_name=#{userName}, sex=#{sex} WHERE user_id=#{userId}
+    </update>
+
 </mapper>
