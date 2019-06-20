@@ -1,4 +1,4 @@
-# Spring Boot集成 MyBatis和 MySQL实践》
+# Spring Boot集成 MyBatis和 MySQL实践
 
 ---
 
@@ -143,24 +143,28 @@ public class User {
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.middle.springbt_mybatis_mysql.mapper.UserMapper">
 
-   <resultMap id="userMap" type="cn.middle.springbt_mybatis_mysql.entity.User">
-       <id property="userId" column="user_id" javaType="java.lang.Long"></id>
-       <result property="userName" column="user_name" javaType="java.lang.String"></result>
-       <result property="sex" column="sex" javaType="java.lang.Boolean"></result>
-       <result property="createdTime" column="created_time" javaType="java.lang.String"></result>
-   </resultMap>
+    <resultMap id="userMap" type="cn.middle.springbt_mybatis_mysql.entity.User">
+        <id property="userId" column="user_id" javaType="java.lang.Long"></id>
+        <result property="userName" column="user_name" javaType="java.lang.String"></result>
+        <result property="sex" column="sex" javaType="java.lang.Boolean"></result>
+        <result property="createdTime" column="created_time" javaType="java.lang.String"></result>
+    </resultMap>
 
-   <select id="getAllUsers" resultMap="userMap">
-      select * from user_test
-   </select>
+    <select id="getAllUsers" resultMap="userMap">
+        select * from user_test
+    </select>
 
-   <insert id="addUser" parameterType="cn.middle.springbt_mybatis_mysql.entity.User">
-      insert into user_test ( user_id, user_name, sex, created_time ) values ( #{userId}, #{userName}, #{sex}, #{createdTime} )
-   </insert>
+    <insert id="addUser" parameterType="cn.middle.springbt_mybatis_mysql.entity.User">
+        insert into user_test ( user_id, user_name, sex, created_time ) values ( #{userId}, #{userName}, #{sex}, #{createdTime} )
+    </insert>
 
-   <delete id="deleteUser" parameterType="cn.middle.springbt_mybatis_mysql.entity.User">
-      delete from user_test where user_name = #{userName}
-   </delete>
+    <delete id="deleteUser" parameterType="cn.middle.springbt_mybatis_mysql.entity.User">
+        delete from user_test where user_name = #{userName}
+    </delete>
+
+    <update id="updateUser" parameterType="cn.middle.springbt_mybatis_mysql.entity.User">
+        update user_test set user_name=#{userName}, sex=#{sex} WHERE user_id=#{userId}
+    </update>
 
 </mapper>
 ```
@@ -169,13 +173,15 @@ public class User {
 
 ```java
 public interface UserMapper {
-   List<User> getAllUsers();
-   int addUser( User user );
-   int deleteUser( User user );
+
+    List<User> getAllUsers();
+    int addUser( User user );
+    int deleteUser( User user );
+    int updateUser( User user);
 }
 ```
 
-为了试验起见，这里给出了 **增 / 删 / 查** 三个数据库操作动作。
+为了试验起见，这里给出了 **增 / 删 / 查/ 改** 三个数据库操作动作。
 
 
 
@@ -198,19 +204,24 @@ public class UserServiceImpl implements IUserService {
    @Override
    public List<User> getAllUsers() {
        return userMapper.getAllUsers();
-  }
+   }
 
    @Override
    public int addUser(User user) {
        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
        user.setCreatedTime( form.format(new Date()) );
        return userMapper.addUser( user );
-  }
+   }
 
    @Override
    public int deleteUser(User user) {
        return userMapper.deleteUser( user );
-  }
+   }
+    
+   @Override
+   public int updateUser(User user) {
+       return userMapper.updateUser( user );
+   }
 }
 ```
 
@@ -239,6 +250,11 @@ public class UserController {
    public int deleteUser( @RequestBody User user ) {
        return userService.deleteUser( user );
   }
+    
+   @RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
+   public int updateUser( @RequestBody User user ) {
+       return userService.updateUser( user );
+   }
 
 }
 ```
