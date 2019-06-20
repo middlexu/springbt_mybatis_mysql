@@ -1,12 +1,10 @@
 package cn.middle.springbt_mybatis_mysql.controller;
 
+import cn.middle.springbt_mybatis_mysql.anno.SysLog;
 import cn.middle.springbt_mybatis_mysql.entity.User;
-import cn.middle.springbt_mybatis_mysql.service.IUserService;
+import cn.middle.springbt_mybatis_mysql.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,7 +12,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/getAllUser", method = RequestMethod.GET)
     public List<User> getAllUser() {
@@ -41,4 +39,11 @@ public class UserController {
 
     // 注解@RequestParam与@RequestBody的使用场景,参考
     // https://cloud.tencent.com/developer/article/1414464
+
+
+    @SysLog("测试")
+    @RequestMapping("/testannotation")
+    public String testannotation(@RequestParam("name") String name){
+        return name;
+    }
 }

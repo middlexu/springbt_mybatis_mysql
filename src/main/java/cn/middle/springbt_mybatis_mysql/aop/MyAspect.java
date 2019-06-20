@@ -12,12 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -154,7 +150,14 @@ public class MyAspect {
             throwable.printStackTrace();
         }
         logger.info("@Around环绕通知执行结束");
+
         return obj;
     }
+
+
+
+
+
+
 
 }

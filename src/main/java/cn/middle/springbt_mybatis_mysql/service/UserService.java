@@ -4,7 +4,7 @@ import cn.middle.springbt_mybatis_mysql.entity.User;
 
 import java.util.List;
 
-public interface IUserService {
+public interface UserService {
 
     List<User> getAllUsers();
     int addUser( User user );

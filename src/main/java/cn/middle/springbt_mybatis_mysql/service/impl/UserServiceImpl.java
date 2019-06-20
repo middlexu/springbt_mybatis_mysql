@@ -2,7 +2,7 @@ package cn.middle.springbt_mybatis_mysql.service.impl;
 
 import cn.middle.springbt_mybatis_mysql.entity.User;
 import cn.middle.springbt_mybatis_mysql.mapper.UserMapper;
-import cn.middle.springbt_mybatis_mysql.service.IUserService;
+import cn.middle.springbt_mybatis_mysql.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @Primary  // 注意这个注解的添加，否则会报：Autowired required a single bean, but 2 were found！！！ （疑问？难道UserServiceImpl和IUserService不是一个东西嘛？）
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;

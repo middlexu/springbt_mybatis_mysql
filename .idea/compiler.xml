@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="springbt_mybatis_mysql" />
         <module name="springbt_mybatis_sqlserver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="springbt_mybatis_mysql" target="1.8" />
       <module name="springbt_mybatis_sqlserver" target="1.8" />
     </bytecodeTargetLevel>
   </component>
