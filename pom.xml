@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.middle</groupId>
@@ -54,8 +54,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.16.RELEASE</version> <!--  此处当时实验时居然不支持Spring Boot 2.1.0.RELEASE -->
-        <relativePath/> <!-- lookup parent from repository -->
+        <!--<version>1.5.16.RELEASE</version> &lt;!&ndash;  此处当时实验时居然不支持Spring Boot 2.1.0.RELEASE &ndash;&gt;-->
+        <version>2.1.4.RELEASE</version>
+        <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
 
@@ -71,6 +72,7 @@
             <scope>test</scope>
         </dependency>
 
+
         <!--for mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -82,6 +84,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <!--<version>8.0.15</version>-->
         </dependency>
 
         <!-- druid -->
@@ -112,6 +115,11 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>org.aspectj</groupId>-->

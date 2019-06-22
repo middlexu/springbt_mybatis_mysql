@@ -75,11 +75,24 @@ spring.datasource.password=root
 - 首先在 My数据库中新建数据表 `user_test`作为测试用表
 
 ```mysql
+-- mysql5.5中，有BUG。这里created_time(timestamp)在update语句时也会更新。在5.5版本中，不能设置两个自动赋值的timestamp类型的字段
+-- CREATE TABLE `test`.`user_test` (
+--  `user_id` int(10) NOT NULL,
+--  `user_name` varchar(255) NULL,
+--  `sex` tinyint(1) NULL,
+--  `created_time` timestamp DEFAULT CURRENT_TIMESTAMP,
+--  PRIMARY KEY (`user_id`)
+-- )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- 升级为mysql5.7
+DROP TABLE IF EXISTS `user_test`;
 CREATE TABLE `test`.`user_test` (
  `user_id` int(10) NOT NULL,
  `user_name` varchar(255) NULL,
  `sex` tinyint(1) NULL,
- `created_time` timestamp DEFAULT CURRENT_TIMESTAMP,
+ `created_time` timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+ `updated_time` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
  PRIMARY KEY (`user_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
